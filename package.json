@@ -3,9 +3,12 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
+		"build": "rm -rf dist && webpack --mode production && cpx \"public/*\" dist",
+		"serve": "serve -s dist",
 		"start": "webpack-dev-server --config webpack.config.js"
 	},
 	"devDependencies": {
+		"cpx": "^1.5.0",
 		"css-loader": "^3.4.1",
 		"sass-loader": "^8.0.0",
 		"url-loader": "^3.0.0",
@@ -20,8 +23,12 @@
 	"dependencies": {
 		"axios": "^0.19.0",
 		"sass": "^1.69.7",
+		"serve": "^14.2.1",
 		"vue": "^2.6.11"
 	},
 	"author": "",
-	"description": ""
+	"description": "",
+	"engines" : { 
+    "node" : "16"
+  }
 }
