@@ -27,5 +27,8 @@
 		"vue": "^2.6.11"
 	},
 	"author": "",
-	"description": ""
+	"description": "",
+	"engines" : { 
+    "node" : "16"
+  }
 }
