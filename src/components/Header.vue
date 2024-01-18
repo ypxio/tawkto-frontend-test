@@ -14,7 +14,9 @@ export default {
 
 <style lang="scss" scoped>
 	@import '../scss/_variables.scss';
-
+	#header-wrapper {
+		background: white;
+	}
 	#header-text{
 		text-align: center;
 		font-family: $font-family;
