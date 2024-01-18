@@ -18,7 +18,11 @@ export default {
 </script>
 
 <style lang="scss">
+	@import 'scss/_variables.scss';
 	@import 'scss/main.scss';
+	html, body {
+		font-family: $font-family;
+	}
 	#container {
 		background: #fafafa;
 		min-height: 100vh;
@@ -26,7 +30,6 @@ export default {
 	#router-view {
 		width: 960px;
 		margin: 0 auto;
-		background: red;
-		overflow: auto;
+		// overflow: auto;
 	}
 </style>

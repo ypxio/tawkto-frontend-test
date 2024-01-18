@@ -2,6 +2,7 @@
 
 import { ref, computed } from 'vue'
 import axios from 'axios'
+import CategoryCard from '../components/CategoryCard.vue';
 
 const data = ref([])
 
@@ -18,12 +19,21 @@ const filteredCategories = computed(() => {
 </script>
 
 <template>
-  <div>
-    <h1>home categories view</h1>
-    <pre>
-      {{ JSON.stringify(filteredCategories, null, 2) }}
-    </pre>
-    <router-link to="/category/a">category A</router-link>
-    <router-link to="/category/b">category B</router-link>
+  <div id="grid">
+    <div v-for="category in filteredCategories">
+      <CategoryCard />
+    </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+	#grid {
+    margin: 60px 0;
+		display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    &>div {
+      min-height: 220px;
+    }
+	}
+</style>
