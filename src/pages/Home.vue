@@ -1,9 +1,8 @@
 <template>
   <div id="grid">
-    <div v-for="category in filteredCategories">
+    <div v-for="category in categories">
       <CategoryCard
         v-bind="category"
-        
         @onClick="onClick"
       />
     </div>
@@ -17,16 +16,18 @@ export default {
   components: { CategoryCard },
   data() {
     return {
-      categories: []
+      originalCategories: []
     }
   },
   async mounted() {
-    this.categories = await this.getCategories()
+    this.originalCategories = await this.getCategories()
   },
   computed: {
-    filteredCategories() {
-      return this.categories.filter(d => d.enabled)
-    }
+    categories() {
+      return this.originalCategories
+        .filter(d => d.enabled)
+        .sort((a, b) => a.order - b.order)
+    },
   },
   methods: {
     getCategories() {
