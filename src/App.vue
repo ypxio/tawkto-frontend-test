@@ -28,8 +28,8 @@ export default {
 		min-height: 100vh;
 	}
 	#router-view {
-		width: 960px;
+		width: 985px;
 		margin: 0 auto;
-		// overflow: auto;
+		overflow: auto;
 	}
 </style>

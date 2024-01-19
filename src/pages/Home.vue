@@ -1,30 +1,51 @@
-<script setup>
-
-import { ref, computed } from 'vue'
-import axios from 'axios'
-import CategoryCard from '../components/CategoryCard.vue';
-
-const data = ref([])
-
-axios
-  .get('http://localhost:9000/api/categories')
-  .then(response => {
-    data.value = response.data
-  })
-
-const filteredCategories = computed(() => {
-  return data.value.filter(d => d.enabled)
-})
-
-</script>
-
 <template>
   <div id="grid">
     <div v-for="category in filteredCategories">
-      <CategoryCard />
+      <CategoryCard
+        v-bind="category"
+        
+        @onClick="onClick"
+      />
     </div>
   </div>
 </template>
+
+<script>
+import axios from 'axios'
+import CategoryCard from '../components/CategoryCard.vue';
+export default {
+  components: { CategoryCard },
+  data() {
+    return {
+      categories: []
+    }
+  },
+  async mounted() {
+    this.categories = await this.getCategories()
+  },
+  computed: {
+    filteredCategories() {
+      return this.categories.filter(d => d.enabled)
+    }
+  },
+  methods: {
+    getCategories() {
+      return new Promise((resolve, reject) => {
+        axios.get('http://localhost:9000/api/categories')
+          .then(response => {
+            resolve(response.data);
+          })
+          .catch(err => {
+            reject(err);
+          })
+      })
+    },
+    onClick(id) {
+      this.$router.push('/category/' + id)
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 	#grid {
