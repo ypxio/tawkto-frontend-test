@@ -53,22 +53,18 @@ module.exports = {
 				res.json(dataObj.categories);
 			});
 
-			app.get('/api/category/*', function (req, res) {
+			app.get('/api/category/:id', function (req, res) {
+				const categoryId = req.params.id
+				res.json(dataObj.categories.find(category => category.id === categoryId));
+			});
+
+			app.get('/api/articles', function (req, res) {
 				res.json(dataObj.articles);
 			});
 
-			app.get('/api/author/*', function (req, res) {
-				let author = {};
-				const authorId = req.params['0'];
-
-				for (let index = 0; index < dataObj.authors.length; index++) {
-					if (dataObj.authors[index].id === authorId) {
-						author = dataObj.authors[index];
-						break;
-					}
-					
-				}
-				res.json(author);
+			app.get('/api/author/:id', function (req, res) {
+				const authorId = req.params.id;
+				res.json(dataObj.authors.find(author => author.id === authorId));
 			});
 
 			app.get('/api/search/*', function (req, res) {
