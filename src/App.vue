@@ -28,8 +28,15 @@ export default {
 		min-height: 100vh;
 	}
 	#router-view {
+		display: flex;
 		width: 985px;
 		margin: 0 auto;
-		overflow: auto;
+		// overflow: auto;
+		height: 100%;
+		>div {
+			display: flex;
+			width: 100%;
+			flex-direction: column;
+		}
 	}
 </style>
