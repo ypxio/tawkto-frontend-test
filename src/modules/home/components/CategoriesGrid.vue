@@ -1,7 +1,7 @@
 <template>
   <div id="grid">
     <div v-for="category in categories">
-      <CategoryCard
+      <Card
         v-bind="category"
         @onClick="onClick"
       />
@@ -11,9 +11,9 @@
 
 <script>
 import axios from 'axios'
-import CategoryCard from '../components/CategoryCard.vue';
+import Card from '../../../components/Card.vue';
 export default {
-  components: { CategoryCard },
+  components: { Card },
   data() {
     return {
       originalCategories: []
