@@ -7,11 +7,11 @@ Vue.use(VueRouter)
 const routes = [
   {
 		path: '/',
-		component: () => import('./pages/Home.vue')
+		component: () => import('./views/Home.vue')
 	},
   {
 		path: '/category/:id',
-		component: () => import('./pages/Category.vue')
+		component: () => import('./views/Category.vue')
 	}
 ]
 
