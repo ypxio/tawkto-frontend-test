@@ -18,10 +18,14 @@
 <script>
 import HorizontalCard from '../../../components/HorizontalCard.vue';
 import dayjs from 'dayjs';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
 
 export default {
   components: { HorizontalCard },
   props: ['id', 'title', 'updatedOn', 'icon'],
+  created() {
+    dayjs.extend(localizedFormat)
+  },
   filters: {
     formatDate: (date) => {
       return dayjs(date).format('ll');
