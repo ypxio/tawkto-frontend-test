@@ -14,27 +14,41 @@ module.exports = {
 		filename: 'bundle.js'
   },
 	module: {
-		rules: [{
-			test: /\.vue$/,
-			use: 'vue-loader'
-		},
-		{
-			test: /\.scss$/,
-			use: [
-				'vue-style-loader',
-				'css-loader',
-				'sass-loader',
-			]
-		},
-		{
-			test: /\.(ttf|eot|woff|woff2)$/,
-			use: {
-				loader: 'url-loader',
-				options: {
-					name: '[name].[ext]',
-				},
+		rules: [
+			{
+				test: /\.(?:js|mjs|cjs)$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: [
+							['@babel/preset-env', { targets: "defaults" }]
+						]
+					}
+				}
 			},
-		  }]
+			{
+				test: /\.vue$/,
+				use: 'vue-loader'
+			},
+			{
+				test: /\.scss$/,
+				use: [
+					'vue-style-loader',
+					'css-loader',
+					'sass-loader',
+				]
+			},
+			{
+				test: /\.(ttf|eot|woff|woff2)$/,
+				use: {
+					loader: 'url-loader',
+					options: {
+						name: '[name].[ext]',
+					},
+				},
+		  }
+		]
 	},
 	plugins: [
 		new VueLoaderPlugin()
