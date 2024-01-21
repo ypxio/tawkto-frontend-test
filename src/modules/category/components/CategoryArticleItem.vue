@@ -1,5 +1,8 @@
 <template>
-  <horizontal-card>
+  <horizontal-card
+    :hoverable="true"
+    @click="() => $router.push('/article/' + $props.id)"
+  >
     <template v-slot:icon>
       <i :class="`fa fa-${$props.icon} fa-lg`" />
     </template>
@@ -18,7 +21,7 @@ import dayjs from 'dayjs';
 
 export default {
   components: { HorizontalCard },
-  props: ['title', 'updatedOn', 'icon'],
+  props: ['id', 'title', 'updatedOn', 'icon'],
   filters: {
     formatDate: (date) => {
       return dayjs(date).format('ll');
