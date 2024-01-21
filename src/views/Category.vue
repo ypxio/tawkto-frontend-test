@@ -35,7 +35,7 @@ export default {
       breadcrumbItems: [
         {
           label: 'All categories',
-          onClick: () => $router.back()
+          onClick: () => this.$router.back()
         }
       ]
     }
