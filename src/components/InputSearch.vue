@@ -37,7 +37,7 @@
   }
   button {
     background: $green;
-    width: 80px;
+    min-width: 80px;
     border: none;
     border-radius: 0 4px 4px 0;
     i {

@@ -4,8 +4,10 @@
       <i :class="`fa fa-${$props.icon} fa-lg`" />
     </template>
     <template v-slot:content>
-      <h3>{{ $props.title }}</h3>
-      <span>Updated {{ $props.updatedOn | formatDate }}</span>
+      <div class="card-content">
+        <h3>{{ $props.title }}</h3>
+        <span>Updated {{ $props.updatedOn | formatDate }}</span>
+      </div>
     </template>
   </horizontal-card>
 </template>
@@ -27,16 +29,24 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../../scss/variables.scss';
-h3 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: normal;
-  line-height: 24px;
-}
-span {
-  font-size: 11px;
-  color: $text-gray;
-  line-height: 22px;
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  span {
+    font-size: 11px;
+    color: $text-gray;
+    line-height: 22px;
+  }
 }
 i {
   color: $green;

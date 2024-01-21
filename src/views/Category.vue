@@ -1,17 +1,7 @@
 <template>
   <div>
-    <div v-if="this.category">
-      <breadcrumb
-        :items="[
-          {
-            label: 'All categories',
-            onClick: () => $router.back()
-          },
-          {
-            label: this.category.title
-          },
-        ]"
-      />
+    <div id="topbar">
+      <breadcrumb :items="breadcrumbItems" />
     </div>
     <div id="content">
       <div id="sidebar">
@@ -42,10 +32,21 @@ export default {
   data() {
     return {
       category: undefined,
+      breadcrumbItems: [
+        {
+          label: 'All categories',
+          onClick: () => $router.back()
+        }
+      ]
     }
   },
   async mounted() {
     this.category = await this.getCategory(this.$route.params.id)
+    this.breadcrumbItems.push(
+      {
+        label: this.category.title
+      },
+    )
   },
   methods: {
     getCategory(id) {
@@ -62,21 +63,32 @@ export default {
 
 <style lang="scss" scoped>
   @import '../scss/_variables.scss';
-  pre {
-    white-space: pre-wrap;    
+  @import '../scss/_mixins.scss';
+  #topbar {
+    padding: 21px 0;
   }
   #content {
     display: flex;
+    flex-direction: column;
+    @include breakpoint(md) {
+      flex-direction: row;
+    }
     width: 100%;
-    gap: 60px;
+    gap: 20px;
+    @include breakpoint(md) { gap: 40px }
+    @include breakpoint(lg) { gap: 60px }
     #sidebar {
-      width: 30%;
+      width: 100%;
+      @include breakpoint(md) { width: 40% }
+      @include breakpoint(lg) { width: 30% }
       #category-card {
         height: 345px;
       }
     }
     #mainbar {
-      width: 70%;
+      width: 100%;
+      @include breakpoint(md) { width: 60% }
+      @include breakpoint(lg) { width: 70% }
     }
   }
 </style>
