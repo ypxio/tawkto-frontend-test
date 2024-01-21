@@ -38,8 +38,7 @@ export default {
 			width: 100%;
 			@include breakpoint(sm) { width: 480px }
 			@include breakpoint(md) { width: 540px }
-			@include breakpoint(lg) { width: 600px }
-			@include breakpoint(xl) { width: 720px }
+			@include breakpoint(lg) { width: 720px }
 		}
 		&-text {
 			text-align: center;

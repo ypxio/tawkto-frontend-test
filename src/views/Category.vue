@@ -5,14 +5,10 @@
     </div>
     <div id="content">
       <div id="sidebar">
-        <div id="category-card">
-          <Card
-            v-bind="category"
-          />
-        </div>
+        <category-profile-card v-bind="category" />
       </div>
       <div id="mainbar">
-        <CategoryArticleList />
+        <category-article-list />
       </div>
     </div>
   </div>
@@ -21,13 +17,17 @@
 <script>
 import axios from 'axios'
 import Card from '../components/Card.vue'
+import RegularCard from '../components/RegularCard.vue'
 import Breadcrumb from '../components/Breadcrumb.vue'
+import CategoryProfileCard from '../modules/category/components/CategoryProfileCard.vue'
 import CategoryArticleList from '../modules/category/components/CategoryArticleList.vue'
 export default {
   components: {
     Card,
+    RegularCard,
     Breadcrumb,
-    CategoryArticleList
+    CategoryArticleList,
+    CategoryProfileCard
   },
   data() {
     return {
@@ -62,33 +62,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../scss/_variables.scss';
-  @import '../scss/_mixins.scss';
-  #topbar {
-    padding: 21px 0;
+@import '../scss/_variables.scss';
+@import '../scss/_mixins.scss';
+#topbar {
+  padding: 21px 0;
+}
+#content {
+  display: flex;
+  flex-direction: column;
+  @include breakpoint(md) {
+    flex-direction: row;
   }
-  #content {
-    display: flex;
-    flex-direction: column;
-    @include breakpoint(md) {
-      flex-direction: row;
-    }
+  width: 100%;
+  gap: 20px;
+  @include breakpoint(md) { gap: 40px }
+  @include breakpoint(lg) { gap: 60px }
+  #sidebar {
     width: 100%;
-    gap: 20px;
-    @include breakpoint(md) { gap: 40px }
-    @include breakpoint(lg) { gap: 60px }
-    #sidebar {
-      width: 100%;
-      @include breakpoint(md) { width: 40% }
-      @include breakpoint(lg) { width: 30% }
-      #category-card {
-        height: 345px;
-      }
-    }
-    #mainbar {
-      width: 100%;
-      @include breakpoint(md) { width: 60% }
-      @include breakpoint(lg) { width: 70% }
-    }
+    @include breakpoint(md) { width: 40% }
+    @include breakpoint(lg) { width: 30% }
   }
+  #mainbar {
+    width: 100%;
+    @include breakpoint(md) { width: 60% }
+    @include breakpoint(lg) { width: 70% }
+  }
+}
 </style>

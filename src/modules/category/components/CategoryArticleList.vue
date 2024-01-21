@@ -1,7 +1,7 @@
 <template>
   <ul id="articles">
     <li v-for="article in publishedArticles">
-      <CategoryArticleItem v-bind="article" />
+      <category-article-item v-bind="article" />
     </li>
   </ul>
 </template>

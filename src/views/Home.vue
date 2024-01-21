@@ -1,5 +1,5 @@
 <template>
-  <CategoriesGrid />
+  <categories-grid />
 </template>
 
 <script>
