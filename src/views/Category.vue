@@ -16,14 +16,12 @@
 
 <script>
 import axios from 'axios'
-import Card from '../components/Card.vue'
 import RegularCard from '../components/RegularCard.vue'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import CategoryProfileCard from '../modules/category/components/CategoryProfileCard.vue'
 import CategoryArticleList from '../modules/category/components/CategoryArticleList.vue'
 export default {
   components: {
-    Card,
     RegularCard,
     Breadcrumb,
     CategoryArticleList,

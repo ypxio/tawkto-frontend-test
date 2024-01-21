@@ -4,7 +4,6 @@
       :title="$props.title"
       :subtitle="`Updated ${$options.filters.humanlyDiff(this.$props.updatedOn)}`"
       :icon="$props.icon"
-      v-bind:hoverable="true"
     >
       <template v-slot:extra>
         <div class="category-profile-card__extra">
@@ -41,8 +40,8 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../../scss/_variables.scss';
+@import '../../../scss/_mixins.scss';
 .category-profile-card {
-  min-height: 345px;
   &__extra {
     display: flex;
     flex-direction: column;

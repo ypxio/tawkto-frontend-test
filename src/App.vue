@@ -31,10 +31,14 @@ export default {
 	#router-view {
 		display: flex;
 		width: 100%;
+		padding: 0 20px;
+		@include breakpoint(sm) {
+			padding: 0 60px;
+		}
 		@include breakpoint(lg) {
 			width: 985px;
+			padding: 0;
 		}
-		padding: 0 20px;
 		margin: 0 auto;
 		// overflow: auto;
 		height: 100%;
