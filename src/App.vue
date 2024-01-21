@@ -19,6 +19,7 @@ export default {
 
 <style lang="scss">
 	@import 'scss/_variables.scss';
+	@import 'scss/_mixins.scss';
 	@import 'scss/main.scss';
 	html, body {
 		font-family: $font-family;
@@ -29,7 +30,11 @@ export default {
 	}
 	#router-view {
 		display: flex;
-		width: 985px;
+		width: 100%;
+		@include breakpoint(lg) {
+			width: 985px;
+		}
+		padding: 0 20px;
 		margin: 0 auto;
 		// overflow: auto;
 		height: 100%;

@@ -13,9 +13,13 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../scss/variables.scss';
+@import '../scss/_variables.scss';
+@import '../scss/_mixins.scss';
 .horizontal-card {
-  padding: 20px;
+  padding: 20px 10px;
+  @include breakpoint(sm) {
+    padding: 20px;
+  }
   border: 1px solid #eeeeee;
   background: white;
   display: flex;
@@ -23,16 +27,18 @@
   margin-bottom: 18px;
   border-radius: 4px;
   &__icon {
-    width: 56px;
+    min-width: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   &__content {
     flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
   }
   &__extra {
-    width: 40px;
+    min-width: 56px;
     display: flex;
     align-items: center;
     justify-content: center;

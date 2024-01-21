@@ -41,7 +41,6 @@ export default {
 <style lang="scss" scoped>
 @import '../scss/_variables.scss';
 #breadcrumb {
-  margin: 21px 0;
   ul {
     margin: 0;
     padding: 0;
