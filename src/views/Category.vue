@@ -68,6 +68,7 @@ export default {
 #content {
   display: flex;
   flex-direction: column;
+  padding-bottom: 60px;
   @include breakpoint(md) {
     flex-direction: row;
   }
