@@ -1,17 +1,21 @@
 import Vue from 'vue'
+
 import App from './App.vue'
 import VueRouter from 'vue-router'
+
+import HomeView from '../src/views/Home.vue'
+import CategoryView from '../src/views/Category.vue'
 
 Vue.use(VueRouter)
 
 var routes = [
   {
 		path: '/',
-		component: () => import('./views/Home.vue')
+		component: HomeView
 	},
   {
 		path: '/category/:id',
-		component: () => import('./views/Category.vue')
+		component: CategoryView
 	}
 ]
 

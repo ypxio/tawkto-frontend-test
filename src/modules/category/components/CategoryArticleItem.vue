@@ -1,7 +1,6 @@
 <template>
   <horizontal-card
     :hoverable="true"
-    @click="() => $router.push('/article/' + $props.id)"
   >
     <template v-slot:icon>
       <i :class="`fa fa-${$props.icon} fa-lg`" />

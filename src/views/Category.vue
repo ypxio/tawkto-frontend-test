@@ -1,7 +1,18 @@
 <template>
   <div>
-    <div id="topbar">
-      <breadcrumb :items="breadcrumbItems" />
+    <div id="topbar" v-show="category">
+      <breadcrumb
+        
+        :items="[
+          {
+            label: 'All categories',
+            onClick: function() {
+              $router.back()
+            }
+          },
+          { label: title }
+        ]"
+      />
     </div>
     <div id="content">
       <div id="sidebar">
@@ -31,21 +42,13 @@ export default {
   data() {
     return {
       category: undefined,
-      breadcrumbItems: [
-        {
-          label: 'All categories',
-          onClick: () => this.$router.back()
-        }
-      ]
+      title: '',
+      breadcrumbItems: []
     }
   },
   async mounted() {
     this.category = await this.getCategory(this.$route.params.id)
-    this.breadcrumbItems.push(
-      {
-        label: this.category.title
-      },
-    )
+    this.title = this.category.title
   },
   methods: {
     getCategory(id) {
