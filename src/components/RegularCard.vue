@@ -73,9 +73,11 @@ export default {
     flex-direction: column;
   }
   &.hoverable {
+    transition: all 0.5s ease-out;
     &:hover {
       border: 1px solid $green;
       cursor: pointer;
+      margin-top: -5px;
     }
   }
   &__body {
