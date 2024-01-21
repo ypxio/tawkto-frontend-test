@@ -24,7 +24,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 export default {
   components: { RegularCard },
   props: ['title', 'icon', 'updatedOn', 'description'],
-  created() {
+  created: function() {
     dayjs.extend(relativeTime);
   },
   filters: {

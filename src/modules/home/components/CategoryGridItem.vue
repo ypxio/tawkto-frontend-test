@@ -34,7 +34,7 @@ import RegularCard from '../../../components/RegularCard.vue';
 export default {
   components: { RegularCard },
   props: ['id', 'icon', 'title', 'totalArticle', 'updatedOn'],
-  created() {
+  created: function() {
     dayjs.extend(relativeTime);
     dayjs.extend(localizedFormat)
   },

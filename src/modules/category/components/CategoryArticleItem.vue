@@ -22,7 +22,7 @@ import localizedFormat from 'dayjs/plugin/localizedFormat';
 export default {
   components: { HorizontalCard },
   props: ['id', 'title', 'updatedOn', 'icon'],
-  created() {
+  created: function() {
     dayjs.extend(localizedFormat)
   },
   filters: {

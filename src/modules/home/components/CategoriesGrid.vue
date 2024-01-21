@@ -12,12 +12,12 @@ import dataJSON from '../../../../data/data.json'
 import CategoryGridItem from './CategoryGridItem.vue';
 export default {
   components: { CategoryGridItem },
-  data() {
+  data: function() {
     return {
       originalCategories: []
     }
   },
-  async mounted() {
+  mounted: async function() {
     this.originalCategories = await this.getCategories()
   },
   computed: {

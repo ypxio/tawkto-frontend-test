@@ -14,12 +14,12 @@ export default {
   components: {
     CategoryArticleItem
   },
-  data() {
+  data: function() {
     return {
       articles: []
     }
   },
-  async mounted() {
+  mounted: async function() {
     this.articles = await this.getArticles()
   },
   computed: {

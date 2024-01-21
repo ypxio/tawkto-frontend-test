@@ -39,14 +39,14 @@ export default {
     CategoryArticleList,
     CategoryProfileCard
   },
-  data() {
+  data: function() {
     return {
       category: undefined,
       title: '',
       breadcrumbItems: []
     }
   },
-  async mounted() {
+  mounted: async function() {
     this.category = await this.getCategory(this.$route.params.id)
     this.title = this.category.title
   },
