@@ -16,6 +16,7 @@
 
 <script>
 import axios from 'axios'
+import dataJSON from '../../data/data.json'
 import RegularCard from '../components/RegularCard.vue'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import CategoryProfileCard from '../modules/category/components/CategoryProfileCard.vue'
@@ -49,9 +50,14 @@ export default {
   methods: {
     getCategory(id) {
       return new Promise((resolve, reject) => {
-        axios.get('http://localhost:9000/api/category/' + id)
-          .then(response => resolve(response.data))
-          .catch(err => reject(err))
+        if (process.env.NODE_ENV === 'development') {
+          axios.get('http://localhost:9000/api/category/' + id)
+            .then(response => resolve(response.data))
+            .catch(err => reject(err))
+        } else {
+          const category = dataJSON.categories.find(c => c.id === id)
+          resolve(category)
+        }
       })
     },
   }

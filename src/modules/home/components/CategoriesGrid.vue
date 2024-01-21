@@ -8,6 +8,7 @@
 
 <script>
 import axios from 'axios'
+import dataJSON from '../../../../data/data.json'
 import CategoryGridItem from './CategoryGridItem.vue';
 export default {
   components: { CategoryGridItem },
@@ -29,13 +30,17 @@ export default {
   methods: {
     getCategories() {
       return new Promise((resolve, reject) => {
-        axios.get('http://localhost:9000/api/categories')
-          .then(response => {
-            resolve(response.data);
-          })
-          .catch(err => {
-            reject(err);
-          })
+        if (process.env.NODE_ENV === 'development') {
+          axios.get('http://localhost:9000/api/categories')
+            .then(response => {
+              resolve(response.data);
+            })
+            .catch(err => {
+              reject(err);
+            })
+        } else {
+          resolve(dataJSON.categories)
+        }
       })
     },
     onClick(id) {
