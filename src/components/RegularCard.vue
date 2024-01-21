@@ -88,6 +88,7 @@ export default {
     &__icon-slot {
       padding: 20px 0 24px;
       i {
+        min-height: 48px;
         color: $green;
       }
     }

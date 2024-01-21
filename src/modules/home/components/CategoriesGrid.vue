@@ -1,19 +1,16 @@
 <template>
   <div id="grid">
     <div v-for="category in categories">
-      <Card
-        v-bind="category"
-        @onClick="onClick"
-      />
+      <category-grid-item v-bind="category" />
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import Card from '../../../components/Card.vue';
+import CategoryGridItem from './CategoryGridItem.vue';
 export default {
-  components: { Card },
+  components: { CategoryGridItem },
   data() {
     return {
       originalCategories: []
@@ -49,13 +46,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-	#grid {
-    margin: 60px 0;
-		display: grid;
+@import '../../../scss/_mixins.scss';
+#grid {
+  padding: 20px 0;
+  gap: 20px;
+  @include breakpoint(sm) {
+    padding: 60px 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include breakpoint(lg) {
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    &>div {
-      min-height: 220px;
-    }
-	}
+  }
+  // padding: 60px 0;
+  &>div {
+    min-height: 220px;
+  }
+}
 </style>
