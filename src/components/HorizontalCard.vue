@@ -1,5 +1,13 @@
 <template>
-  <div class="horizontal-card">
+  <div
+    v-bind:class="[
+      'horizontal-card',
+      {
+        'hoverable': $props.hoverable
+      }
+    ]"
+    @click="$emit('click')"
+  >
     <div class="horizontal-card__icon">
       <slot name="icon"></slot>
     </div>
@@ -11,6 +19,12 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ['hoverable'],
+}
+</script>
 
 <style lang="scss" scoped>
 @import '../scss/_variables.scss';
@@ -26,6 +40,12 @@
   width: 100%;
   margin-bottom: 18px;
   border-radius: 4px;
+  &.hoverable {
+    &:hover {
+      border: 1px solid $green;
+      cursor: pointer;
+    }
+  }
   &__icon {
     min-width: 56px;
     display: flex;
