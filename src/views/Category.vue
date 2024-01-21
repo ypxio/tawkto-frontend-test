@@ -1,17 +1,17 @@
 <template>
   <div>
-    <div id="breadcrumb">
-      <ul>
-        <li>
-          <a href="#" @click="$router.back()">All categories</a>
-        </li>
-        <li>
-          <i class="fa fa-chevron-right fa-xs" />
-        </li>
-        <li>
-          {{ category.title }}
-        </li>
-      </ul>
+    <div v-if="this.category">
+      <breadcrumb
+        :items="[
+          {
+            label: 'All categories',
+            onClick: () => $router.back()
+          },
+          {
+            label: this.category.title
+          },
+        ]"
+      />
     </div>
     <div id="content">
       <div id="sidebar">
@@ -31,12 +31,17 @@
 <script>
 import axios from 'axios'
 import Card from '../components/Card.vue'
+import Breadcrumb from '../components/Breadcrumb.vue'
 import CategoryArticleList from '../modules/category/components/CategoryArticleList.vue'
 export default {
-  components: { Card, CategoryArticleList },
+  components: {
+    Card,
+    Breadcrumb,
+    CategoryArticleList
+  },
   data() {
     return {
-      category: {},
+      category: undefined,
     }
   },
   async mounted() {
@@ -59,26 +64,6 @@ export default {
   @import '../scss/_variables.scss';
   pre {
     white-space: pre-wrap;    
-  }
-	#breadcrumb {
-    margin: 21px 0;
-    ul {
-      margin: 0;
-      padding: 0;
-      li {
-        display: inline;
-        font-size: 13px;
-        color: $text-gray;
-        margin-right: 14px;
-        a {
-          color: $green;
-          text-decoration: none;
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-    }
   }
   #content {
     display: flex;
