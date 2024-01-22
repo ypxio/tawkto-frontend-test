@@ -15,7 +15,7 @@
         <slot name="icon"></slot>
       </template>
       <template v-else>
-        <div class="card__body__icon-slot">
+        <div class="card__body__icon--default">
           <i :class="['fa', 'fa-' + $props.icon, 'fa-3x']" />
         </div>
       </template>
@@ -25,7 +25,7 @@
         <slot name="title"></slot>
       </template>
       <template v-else>
-        <h1 class="card__body__title-slot">
+        <h1 class="card__body__title--default">
           {{ $props.title }}
         </h1>
       </template>
@@ -35,7 +35,7 @@
         <slot name="subtitle"></slot>
       </template>
       <template v-else>
-        <h4 class="card__body__subtitle-slot">
+        <h4 class="card__body__subtitle--default">
           {{ $props.subtitle }}
         </h4>
       </template>
@@ -87,23 +87,23 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    &__icon-slot {
+    &__icon--default {
       padding: 20px 0 24px;
       i {
         min-height: 48px;
         color: $green;
       }
     }
-    &__title-slot, &__subtitle-slot {
+    &__title--default, &__subtitle--default {
       margin: 0;
     }
-    &__title-slot {
+    &__title--default {
       font-size: 23px;
       font-weight: 700;
       line-height: 28px;
       text-align: center;
     }
-    &__subtitle-slot {
+    &__subtitle--default {
       margin-top: 2px;
       font-weight: 400;
       color: $text-gray;
