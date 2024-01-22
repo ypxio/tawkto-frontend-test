@@ -5,17 +5,21 @@
 	"scripts": {
 		"build": "rm -rf dist && webpack --mode production && cpx \"public/*\" dist",
 		"serve": "serve -s dist",
+		"test": "jest",
 		"start": "webpack-dev-server --config webpack.config.js"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.23.4",
 		"@babel/core": "^7.23.7",
 		"@babel/preset-env": "^7.23.8",
+		"@vue/test-utils": "^1.3.6",
 		"babel-loader": "8",
 		"cpx": "^1.5.0",
 		"css-loader": "^3.4.1",
+		"jest": "26",
 		"sass-loader": "^8.0.0",
 		"url-loader": "^3.0.0",
+		"vue-jest": "^3.0.7",
 		"vue-loader": "^15.8.3",
 		"vue-router": "3",
 		"vue-style-loader": "^4.1.2",
@@ -26,6 +30,8 @@
 	},
 	"dependencies": {
 		"axios": "^1.6.5",
+		"babel-core": "^7.0.0-bridge.0",
+		"babel-jest": "^29.7.0",
 		"dayjs": "^1.11.10",
 		"sass": "^1.69.7",
 		"serve": "^14.2.1",
